@@ -1,0 +1,181 @@
+/* General */
+
+::selection {
+  background-color: yellow;
+  color: #000;
+}
+
+button:active {
+  transform: scale(0.94);
+}
+
+/* styles */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  gap: 35px;
+}
+
+.app .watchText,
+.app .watchText .passedTime,
+.app .watchText .targetTime {
+  font-size: 5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+  background-color: yellow;
+  color: #000;
+  padding: 20px 40px;
+  border-radius: 60px;
+  transition: all 0.3s ease-in-out;
+  animation: zoomOut 0.3s ease-in-out;
+  position: relative;
+}
+
+.app .watchText {
+  min-width: 400px;
+  position: relative;
+}
+
+.app .watchText .passedTime,
+.app .watchText .targetTime {
+  background-color: #000;
+  color: yellow;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.app .watchText .passedTime {
+  left: 105%;
+  animation: toLeft 0.3s ease-in-out;
+}
+
+.app .watchText .targetTime {
+  right: 105%;
+  animation: toRight 0.5s ease-in-out;
+}
+
+.app .watchText:hover {
+  font-size: 6rem;
+  cursor: pointer;
+}
+
+.app .watchText:hover .passedTime { 
+  display: block; 
+}
+
+.app .watchText:hover .targetTime { 
+  display: block; 
+}
+
+.app .times-container {
+  transition: all 0.3s ease-in-out;
+  animation: zoomOut 0.3s ease-in-out;
+}
+
+.app .times {
+  display: flex;
+  max-width: 500px;
+  gap: 15px;
+  flex-wrap: wrap;
+  transition: all 0.3s ease-in-out;
+}
+
+.app .times-container h1 {
+  width: fit-content;
+  letter-spacing: 3px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.app .times-container h1::first-letter {
+  background-color: yellow;
+  padding: 6px 3px 6px 12px;
+}
+.app .times-container h1::after {
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: yellow;
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+}
+
+.app .times-container h1:hover {
+  letter-spacing: 5px;
+  cursor: pointer;
+}
+
+.app .control-btn,
+.app .times button {
+  border-radius: 40px;
+  font-size: 25px;
+  border: 0px;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #eee;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.app .times button {
+  padding: 20px 25px;
+  min-width: 100px;
+  flex-grow: 1;
+}
+
+.app .control-btn {
+  padding: 25px 30px;
+}
+.app .control-btn.pause-btn {
+  min-width: 350px;
+}
+.app .control-btn.stop-btn {
+  min-width: 250px;
+}
+.app .control-btn.reset-btn {
+  min-width: 150px;
+}
+
+.app .stop-btn:hover,
+.app .reset-btn:hover,
+.app .times button:hover {
+  color: #eee;
+  background-color: #000;
+}
+
+/* animations */
+@keyframes zoomOut {
+  from { transform: scale(0.7);}
+  to { transform: scale(1);}
+}
+
+@keyframes toLeft {
+  from { 
+    transform: translateY(-50%) translateX(100px);
+    opacity: 0.5;
+  }
+  to { 
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toRight {
+  from { 
+    transform: translateY(-50%) translateX(-100px);
+    opacity: 0.5;
+  }
+  to { 
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+}
